@@ -4,7 +4,7 @@ import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validator
 import { Router, RouterLink } from '@angular/router';
 import { ValidationErrorsService } from '../../services/validation/validation-errors.service';
 import { AuthService } from '../../services/auth/auth.service';
-import 'sweetalert2/src/sweetalert2.scss'
+
 
 
 
