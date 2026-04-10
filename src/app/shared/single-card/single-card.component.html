@@ -1,0 +1,48 @@
+<div class="border border-gray-200 bg-white rounded-lg overflow-hidden hover:-translate-y-2 transition-all">
+    <div class="relative">
+        <div class="">
+            <img [src]="data().imageCover" class="h-60 w-full object-cover" [alt]="data().title">
+        </div>
+        <div class="absolute top-3 right-3 flex flex-col gap-4">
+            <button
+                class="p-3 rounded-full size-8 flex justify-center items-center bg-white opacity-85 shadow-2xl cursor-pointer hover:opacity-100 transition"><i
+                    class="fa-regular fa-heart "></i></button>
+            <button
+                class="p-3 rounded-full size-8 flex justify-center items-center bg-white opacity-85 shadow-2xl cursor-pointer hover:opacity-100 transition"><i
+                    class="fa-solid fa-share"></i></button>
+            <a [routerLink]="['/product-details', data()._id]"
+                class="p-3 rounded-full size-8 flex justify-center items-center bg-white opacity-85 shadow-2xl cursor-pointer hover:opacity-100 transition"><i
+                    class="fa-regular fa-eye"></i></a>
+        </div>
+
+        <div class="px-2.5 py-5">
+            <h2 class="text-rose-900 font-semibold">{{data().category.name}}</h2>
+            <h3><a class="mt-2 font-bold">{{data().title}} </a></h3>
+            <h4 class="mb-2 font-extrabold text-brand-strong">{{data().brand.name}} </h4>
+
+            <div class="rating flex justify-start items-center">
+
+                <app-star-rating [rating]="data().ratingsAverage"></app-star-rating>
+
+                <span class="ms-2">{{data().ratingsAverage}} | ({{data().ratingsQuantity}} reviews)</span>
+            </div>
+        </div>
+
+        <div class="flex justify-between px-3 pb-3 items-center">
+            <p class="text-xl">Price: <span class="text-amber-600">{{data().price | currency : 'EGP'}}</span> </p>
+       
+            <button (click)="addProductToCart(data().id)"
+                class="p-3 text-white rounded-full size-8 bg-green-600 flex justify-center items-center cursor-pointer hover:bg-green-700 transition">
+               @if (addedItem()) {
+                 <i class="fa-solid fa-check"></i>
+               }@else {
+                 <i class="fa-solid fa-plus"></i>
+               }
+            </button>
+            
+        </div>
+
+
+
+    </div>
+</div>

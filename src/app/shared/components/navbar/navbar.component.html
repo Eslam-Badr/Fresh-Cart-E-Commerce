@@ -1,0 +1,262 @@
+<section class=" fixed w-full top-0 z-999999">
+  <!-- Top Info Bar -->
+  <div class="hidden lg:block bg-gray-100 text-sm text-gray-600 border-b">
+    <div class="container mx-auto flex justify-between items-center px-4 py-2">
+
+      <div class="flex gap-6 items-center">
+
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-truck text-green-600"></i>
+          Free Shipping on Orders 500 EGP
+        </div>
+
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-gift text-green-600"></i>
+          New Arrivals Daily
+        </div>
+
+      </div>
+
+      <div class="flex gap-6 items-center">
+
+        <div>
+          <i class="fa-solid fa-phone"></i>
+          +1 (800) 123-4567
+        </div>
+
+        <div>
+          <i class="fa-solid fa-envelope"></i>
+          support@freshcart.com
+        </div>
+
+        @if(!isLoggedIn()){
+        <div class="flex gap-3">
+          <a class="hover:text-green-600">Sign In</a>
+          <a class="hover:text-green-600">Sign Up</a>
+        </div>
+        }
+
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <!-- Main Navbar -->
+  <nav class="bg-white border-b shadow-sm">
+
+    <div class="container mx-auto px-4 ">
+
+      <div class="flex items-center justify-between h-16.5">
+
+        <!-- Logo -->
+        <a class="flex items-center gap-2 text-2xl font-bold">
+          <i class="fa-solid fa-cart-shopping text-green-600"></i>
+          FreshCart
+        </a>
+
+
+        <!-- Search (Desktop) -->
+        <div class="hidden lg:flex flex-1 px-10">
+
+          <div class="w-full relative">
+
+            <input type="text" placeholder="Search for products, brands and more..."
+              class="w-full border rounded-full py-2 px-5 pr-12 border-mist-300 focus:ring-green-500 focus:border-green-500 ">
+
+            <button class="absolute right-2 top-1/2 -translate-y-1/2 bg-green-600 text-white size-8 rounded-full">
+              <i class="fa-solid fa-search"></i>
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- Desktop Menu -->
+        <div class="hidden lg:flex items-center gap-8 text-gray-700">
+
+          <a routerLink="/home" class="hover:text-green-600 transition font-semibold">Home</a>
+          <a routerLink="/products" class="hover:text-green-600 transition font-semibold">Shop</a>
+
+
+          <!-- Drop Down Btn -->
+          <button id="categoryDropDown" data-dropdown-toggle="categoryDelayDrop" data-dropdown-delay="500"
+            data-dropdown-trigger="hover"
+            class="inline-flex items-center justify-center hover:text-green-600 transition font-semibold leading-5 rounded-base text-sm"
+            type="button">
+            Categories
+            <svg class="w-4 h-4 ms-1.5 -me-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+              height="24" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="m19 9-7 7-7-7" />
+            </svg>
+          </button>
+
+          <!-- Dropdown menu -->
+          <div id="categoryDelayDrop"
+            class="z-50 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
+            <ul class="text-sm text-body font-medium" aria-labelledby="categoryDropDown">
+              <li>
+                <a href="#" class="inline-flex items-center w-full p-3 hover:bg-green-100 hover:text-green-600">All
+                  Categories</a>
+              </li>
+              <li>
+                <a href="#"
+                  class="inline-flex items-center w-full p-3 hover:bg-green-100 hover:text-green-600">Electronic</a>
+              </li>
+              <li>
+                <a href="#" class="inline-flex items-center w-full p-3 hover:bg-green-100 hover:text-green-600">Women's
+                  Fasion</a>
+              </li>
+              <li>
+                <a href="#" class="inline-flex items-center w-full p-3 hover:bg-green-100 hover:text-green-600">Men's
+                  Fasion</a>
+              </li>
+              <li>
+                <a href="#" class="inline-flex items-center w-full p-3 hover:bg-green-100 hover:text-green-600">Beauty &
+                  Health</a>
+              </li>
+            </ul>
+          </div>
+
+          <a routerLink="/brands" class="hover:text-green-600 transition font-semibold">Brands</a>
+
+        </div>
+
+
+
+        <div class="flex items-center gap-5 ms-4">
+
+          <div class="hover:opacity-80 border-r border-gray-300 pe-3">
+            <a routerLink="/support">
+              <div class="flex justify-center sitems-center gap-2">
+                <div class="p-5 flex items-center justify-center bg-green-50 rounded-full size-5">
+                  <i class="fa-solid fa-headset text-green-600 text-sm"></i>
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-gray-500 text-sm">Support</span>
+                  <span class="text-xs font-semibold">24/7 Help</span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="flex justify-center items-center text-gray-600">
+            <div
+              class="p-6 flex items-center justify-center rounded-full size-5 hover:bg-gray-100 hover:text-green-600 cursor-pointer">
+              <a routerLink="/wishlist"> <i class="fa-regular fa-heart text-xl"></i> </a>
+            </div>
+            <div
+              class="p-6 flex items-center justify-center rounded-full size-5 hover:bg-gray-100 hover:text-green-600 cursor-pointer">
+              <a routerLink="/cart"> <i class="fa-solid fa-cart-shopping text-xl"></i> </a>
+            </div>
+
+
+            <!-- Logged Out -->
+            @if (!isLoggedIn()) {
+            <a routerLink="/login"
+              class="hidden lg:block bg-green-600 text-white px-6 py-2 rounded-full cursor-pointer hover:bg-green-700 transition">
+              <i class="fa-regular fa-user mr-2"></i>
+              Sign In
+            </a>
+            }
+
+
+            <!-- Logged In -->
+            @if(isLoggedIn()){
+            <!-- Drop Down Btn -->
+            <button id="userDropDown" data-dropdown-toggle="userDelayDrop" data-dropdown-delay="500"
+              data-dropdown-trigger="hover"
+              class="inline-flex items-center justify-center hover:text-green-600 transition font-semibold leading-5 rounded-base text-sm"
+              type="button">
+              <div
+                class="p-6 flex items-center justify-center rounded-full size-5 text-gray-600 hover:bg-gray-100 hover:text-green-600 cursor-pointer">
+                <div aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  fill="none" viewBox="0 0 24 24">
+                  <i class="fa-regular fa-circle-user text-xl"></i>
+                </div>
+              </div>
+            </button>
+
+            <!-- Dropdown menu -->
+            <div id="userDelayDrop"
+              class="z-50 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
+              <ul class="text-sm text-gray-600 font-medium" aria-labelledby="userDropDown">
+                <li>
+                  <a href="#" class="inline-flex items-center w-full p-3 my-1 hover:bg-green-100 hover:text-green-600">
+                    <i class="fa-solid fa-user me-2"></i> My Profile</a>
+                </li>
+                <li>
+                  <a href="#"
+                    class="inline-flex items-center w-full p-3 my-1 hover:bg-green-100 hover:text-green-600">
+                    <i
+                      class="fa-solid fa-box me-2"></i> My Orders</a>
+                </li>
+                <li>
+                  <a href="#"
+                    class="inline-flex items-center w-full p-3 my-1 hover:bg-green-100 hover:text-green-600">
+                    <i class="fa-solid fa-heart me-2"></i> My Wishlist</a>
+                </li>
+                <li>
+                  <a href="#"
+                    class="inline-flex items-center w-full p-3 my-1 hover:bg-green-100 hover:text-green-600">
+                    <i class="fa-solid fa-address-card me-2"></i> Addresses</a>
+                </li>
+                <li>
+                  <a href="#"
+                    class="inline-flex items-center w-full p-3 my-1 hover:bg-green-100 hover:text-green-600">
+                    <i class="fa-solid fa-user-cog me-2"></i> Setting</a>
+                </li>
+                <li>
+                  <a href="#" (click)="logout()"
+                    class="inline-flex items-center w-full p-3 my-1 text-red-500 hover:bg-red-100 hover:text-red-700">
+                    <i class="fa-solid fa-arrow-circle-left me-2"></i>Logout</a>
+                </li>
+              </ul>
+            </div>
+            }
+
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button (click)="toggleMenu()" class="lg:hidden cursor-pointer text-black w-10 h-10 rounded-full">
+            <a class="">
+              <i class="fa-solid fa-bars"></i>
+            </a>
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+
+
+
+    <!-- Mobile Menu -->
+    @if(menuOpen()){
+
+    <div class="lg:hidden border-t px-4 pb-6">
+
+      <div class="py-4">
+
+        <input type="text" placeholder="Search..." class="w-full border rounded-full px-4 py-2">
+
+      </div>
+
+      <div class="flex flex-col gap-4 text-gray-700">
+
+        <a routerLink="/home">Home</a>
+        <a routerLink="/products">Shop</a>
+        <a routerLink="/categories">Categories</a>
+        <a routerLink="/brands">Brands</a>
+
+      </div>
+
+    </div>
+
+    }
+
+  </nav>
+</section>

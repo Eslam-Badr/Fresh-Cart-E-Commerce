@@ -1,0 +1,9 @@
+@for (star of stars(); track $index; let i = $index) {
+  @if (star === 'full') {
+    <i class="fa-solid fa-star text-yellow-400"></i>
+  } @else if (star === 'half') {
+    <i class="fa-solid fa-star-half text-yellow-400"></i>
+  } @else {
+    <i class="fa-regular fa-star"></i>
+  }
+}

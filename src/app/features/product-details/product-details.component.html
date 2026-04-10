@@ -1,0 +1,74 @@
+<section class="container mx-auto my-5">
+    <div class="flex flex-col lg:flex-row justify-center gap-2 items-stretch">
+        <div class="border-2 border-gray-200 rounded-xl p-2 w-full lg:w-1/4 ">
+            <img [src]="data().imageCover" class="" alt="">
+        </div>
+        <div class="flex flex-col items-start gap-2 border-2 border-gray-200 rounded-xl p-6 w-full lg:w-3/4">
+            <div>
+                <a class="bg-green-200 rounded-lg p-2 me-3"> {{data().category.name}} </a>
+                <span class="bg-gray-200 rounded-lg p-2 "> {{data().brand.name}} </span>
+            </div>
+            <div class="rating flex justify-start items-start flex-col gap-y-3 my-5 ">
+
+                <h2 class="font-bold text-3xl ">{{data().title}}</h2>
+
+                <div class="flex justify-start gap-2">
+                    <app-star-rating [rating]="data().ratingsAverage"></app-star-rating>
+                    <span class="font-semibold">{{data().ratingsAverage}} | ({{data().ratingsQuantity}} reviews)</span>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-3xl font-bold text-amber-600 my-2"> {{data().price | currency:"EGP " }} </h3>
+                <del> {{data().price + 100}} </del>
+            </div>
+
+            <div class="bg-green-100 p-2 rounded-lg my-3 border-b-0 flex justify-start items-center gap-2">
+                <span class="size-2 bg-green-400 rounded-full animate-pulse"></span>
+                <span class=""> In Stock </span>
+            </div>
+
+            <div class="border-b-2 border-gray-200 w-full pb-8">
+                <p> {{data().description}} </p>
+            </div>
+
+
+            <div class="my-4 ">
+                <h5 class="mb-2">Quantity</h5>
+                <div class="flex justify-start items-center gap-1 border-2 border-gray-100 rounded-lg">
+                    <button (click)="minusBtn()"
+                        class="p-4 m-0 cursor-pointer  transition-all hover:bg-gray-50/85 hover:text-green-700"><i
+                            class="fa-solid fa-minus"></i></button>
+                    <input [(ngModel)]="btnDataQuantity" min="1" max="220"
+                        class="w-16 text-center border-0 focus:ring-0 focus:outline-none text-lg font-medium"
+                        id="quantity" type="number" [value]="btnDataQuantity()">
+                    <button (click)="plusBtn()"
+                        class="p-4 m-0 cursor-pointer  transition-all hover:bg-gray-50/85 hover:text-green-700"><i
+                            class="fa-solid fa-plus"></i></button>
+                </div>
+
+            </div>
+
+            <div class="flex justify-between items-center bg-gray-200 p-4 w-full rounded-2xl">
+                <h6>Total Price:</h6>
+                <span class="text-xl text-green-700 font-bold"> {{data().price * btnDataQuantity() | currency:'EGP '}}
+                </span>
+            </div>
+
+            <div class="flex justify-center items-center w-full gap-2 my-2 text-white">
+                <button (click)="addProductToCart(data()._id)"
+                    class="capitalize rounded-2xl hover:bg-green-800 w-full transition-all cursor-pointer bg-green-700 p-4"><i
+                        class="fa-solid fa-cart-shopping"></i> add to cart</button>
+                <button
+                    class="capitalize rounded-2xl hover:bg-gray-700 w-full transition-all cursor-pointer bg-black p-4"><i
+                        class="fa-solid fa-bolt-lightning"></i> buy now </button>
+            </div>
+
+            <div class="w-full">
+                <button
+                    class="capitalize rounded-2xl border-2 border-black hover:border-green-500 hover:text-green-500 w-full transition-all cursor-pointer p-4"><i
+                        class="fa-regular fa-heart"></i> add to wishlist </button>
+            </div>
+
+        </div>
+    </div>
+</section>
