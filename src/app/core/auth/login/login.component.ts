@@ -3,7 +3,7 @@ import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core
 import { FormBuilder, FormGroup, Validators, ɵInternalFormsSharedModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ValidationErrorsService } from '../../services/validation/validation-errors.service';
-import Swal from 'sweetalert2';
+import { MySwalMessageService } from '../../services/my-swal-message/my-swal-message.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,8 @@ export class LoginComponent implements OnInit {
   private readonly fb = inject(FormBuilder)
   private readonly validationsService = inject(ValidationErrorsService);
   private readonly authService = inject(AuthService);
-  private readonly router = inject(Router);
+  private readonly router = inject(Router); 
+  private readonly mySwalMessageService = inject(MySwalMessageService); 
 
   signinForm !: FormGroup;
 
@@ -45,10 +46,11 @@ export class LoginComponent implements OnInit {
       },
       error: (err) => {
         console.log(err);
-        this.errorMsg(err.error.message)
+        this.mySwalMessageService.errorMsg(err.error.message)
       },
       complete: () => {
-        this.succesMsg();
+        this.mySwalMessageService.succesMsg(`Congratulations !
+        You have logged in`)
         setTimeout(() => {
           this.router.navigate(['/home'])
         }, 1000)
@@ -67,30 +69,5 @@ export class LoginComponent implements OnInit {
   visiblePassword() {
     this.showPassword.update(v => !v)
   }
-
-
-
-
-
-
-
-  succesMsg() {
-    Swal.fire({
-      title: `Congratulations !
-        You have logged in`,
-      icon: "success",
-      draggable: true
-    });
-  }
-
-    errorMsg(message:string) {
-      Swal.fire({
-        title: `${message}`,
-        icon: "error",
-        draggable: false
-      });
-    }
-  
-  
 
 }

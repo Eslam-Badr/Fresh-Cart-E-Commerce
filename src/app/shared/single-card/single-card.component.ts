@@ -1,12 +1,11 @@
-import { ProductDetailsComponent } from './../../features/product-details/product-details.component';
 import { Component, inject, input, Input, OnInit, signal, WritableSignal } from '@angular/core';
-import { ProductsService } from '../../core/services/products/products.service';
 import { IProduct } from '../../core/models/IProduct/iproduct.interface';
 import { CurrencyPipe } from '@angular/common';
 import { StarRatingComponent } from "../components/star-rating/star-rating.component";
 import { RouterLink } from "@angular/router";
 import { CartService } from '../../core/services/cart/cart.service';
-import Swal from 'sweetalert2';
+import { MySwalMessageService } from '../../core/services/my-swal-message/my-swal-message.service';
+import { WishlistService } from '../../core/services/wishlist/wishlist.service';
 
 @Component({
   selector: 'app-single-card',
@@ -16,9 +15,15 @@ import Swal from 'sweetalert2';
 })
 export class SingleCardComponent {
 
-  data = input.required<IProduct>()
   private readonly cartService = inject(CartService)
-  addedItem: WritableSignal<boolean> = signal(false)
+  private readonly mySwalMessageService = inject(MySwalMessageService)
+  private readonly wishlistService = inject(WishlistService)
+
+
+  cartAddedItem: WritableSignal<boolean> = signal(false)
+  wishlistAddedItem: WritableSignal<boolean> = signal(false)
+  data = input.required<IProduct>()
+
 
 
 
@@ -27,10 +32,9 @@ export class SingleCardComponent {
     this.cartService.addProductToCart(id).subscribe({
       next: (res) => {
         console.log(id)
-        this.addedItem.set(true)
+        this.cartAddedItem.set(true)
         console.log(res);
-        this.succesAddedItem('Cart')
-
+        this.mySwalMessageService.succesAddedItemToast('Cart')
       },
       error: (err) => {
         console.log(err);
@@ -38,22 +42,19 @@ export class SingleCardComponent {
     });
   }
 
-    succesAddedItem(list: string) {
-      Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.onmouseenter = Swal.stopTimer;
-          toast.onmouseleave = Swal.resumeTimer;
-        }
-      }).fire({
-        icon: "success",
-        title: `Item Added to ${list}`
-      });
-    }
-  
+  addProductToWishlist(prodId: any) {
+    this.wishlistService.addProductToWishlist(prodId).subscribe({
+      next: (res) => {
+        this.mySwalMessageService.succesAddedItemToast('Wishlist')
+        console.log(prodId)
+        console.log(res);
+        this.wishlistAddedItem.set(true)
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
+
 
 }

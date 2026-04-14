@@ -7,6 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { CurrencyPipe } from '@angular/common';
 import { CartService } from '../../core/services/cart/cart.service';
 import Swal from 'sweetalert2';
+import { MySwalMessageService } from '../../core/services/my-swal-message/my-swal-message.service';
+import { WishlistService } from '../../core/services/wishlist/wishlist.service';
 
 @Component({
   selector: 'app-product-details',
@@ -18,6 +20,8 @@ export class ProductDetailsComponent implements OnInit {
   private readonly activatedRoute = inject(ActivatedRoute)
   private readonly productsService = inject(ProductsService)
   private readonly cartService = inject(CartService)
+  private readonly wishlistService = inject(WishlistService)
+  private readonly mySwalMessageService = inject(MySwalMessageService)
 
 
 
@@ -83,7 +87,7 @@ export class ProductDetailsComponent implements OnInit {
         console.log(id)
         this.addedItem.set(true)
         console.log(res);
-        this.succesAddedItem('Cart')
+        this.mySwalMessageService.succesAddedItemToast('Cart')
       },
       error: (err) => {
         console.log(err);
@@ -91,22 +95,16 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
 
-
-
-  succesAddedItem(list: string) {
-    Swal.mixin({
-      toast: true,
-      position: "top-end",
-      showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.onmouseenter = Swal.stopTimer;
-        toast.onmouseleave = Swal.resumeTimer;
+  addProductToWishlist(prodId: any) {
+    this.wishlistService.addProductToWishlist(prodId).subscribe({
+      next: (res) => {
+        this.mySwalMessageService.succesAddedItemToast('Wishlist')
+        console.log(prodId)
+        console.log(res);
+      },
+      error: (err) => {
+        console.log(err);
       }
-    }).fire({
-      icon: "success",
-      title: `Item Added to ${list}`
     });
   }
 

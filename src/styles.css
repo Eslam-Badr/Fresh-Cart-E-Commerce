@@ -8,3 +8,8 @@
 @plugin "flowbite/plugin";
 
 @source "../node_modules/flowbite";
+
+
+.swal2-container {
+  z-index: 999999 !important;
+}

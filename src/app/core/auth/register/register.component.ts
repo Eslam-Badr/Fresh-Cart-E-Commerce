@@ -1,9 +1,9 @@
-import Swal from "sweetalert2";
 import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators, } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ValidationErrorsService } from '../../services/validation/validation-errors.service';
 import { AuthService } from '../../services/auth/auth.service';
+import { MySwalMessageService } from '../../services/my-swal-message/my-swal-message.service';
 
 
 
@@ -14,11 +14,14 @@ import { AuthService } from '../../services/auth/auth.service';
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
+
+
 export class RegisterComponent implements OnInit {
   private readonly fb = inject(FormBuilder)
   private readonly validationsService = inject(ValidationErrorsService);
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
+  private readonly mySwalMessageService = inject(MySwalMessageService);
 
 
 
@@ -51,10 +54,12 @@ export class RegisterComponent implements OnInit {
         },
         error: (err) => {
           console.log(err);
+          this.mySwalMessageService.errorMsg(err.error.message)
         },
         complete: () => {
 
-          this.succesMsg();
+          this.mySwalMessageService.succesMsg(`Account Created!
+      Now you can Log in`)
           setTimeout(() => {
             this.router.navigate(['/login'])
           }, 1000)
@@ -104,26 +109,6 @@ export class RegisterComponent implements OnInit {
 
   visiblePassword() {
     this.showPassword.update(v => !v)
-  }
-
-
-
-  // swal massege
-  succesMsg() {
-    Swal.fire({
-      title: `Account Created!
-      Now you can Log in`,
-      icon: "success",
-      draggable: true
-    });
-  }
-
-  errorMsg(message:string) {
-    Swal.fire({
-      title: `${message}`,
-      icon: "error",
-      draggable: false
-    });
   }
 
 
