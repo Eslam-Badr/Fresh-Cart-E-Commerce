@@ -59,7 +59,7 @@ export class MySwalMessageService {
       }
     }).fire({
       icon: "warning",
-      title: `Item Deleted to ${list}`
+      title: `Item Deleted from ${list}`
     });
   }
 

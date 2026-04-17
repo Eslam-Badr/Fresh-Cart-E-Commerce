@@ -41,7 +41,7 @@ export class WishlistComponent implements OnInit {
     this.wishlistService.deleteProductToWishlist(prodId).subscribe({
       next: (res) => {
         console.log(res);
-        this.wishlist.set(res.data)
+       this.getUserProductWishlist()
         this.mySwalMessageService.succesDeletetItemToast('Wishlist')
       },
       error: (err) => {
