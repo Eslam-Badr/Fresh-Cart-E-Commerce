@@ -2,16 +2,26 @@
 
     <div class="w-full">
 
-        <div class="bg-linear-to-br from-green-500 to-green-600 py-8">
-            <div class="container">
-                <div class="flex justify-start items-center py-4 gap-4 text-white">
-                    <div class="text-2xl p-4 flex bg-gray-50/50 rounded-2xl ms-3">
-                        <i class="fa-solid fa-shopping-cart "></i>
+
+        <div class="bg-linear-to-br from-purple-600 to-purple-400 py-12">
+            <div class="container mx-auto">
+
+                <!-- Breadcrumb -->
+                <nav class="flex items-center gap-2 text-sm text-white/80 mb-6">
+                    <a routerLink="/home" class="hover:text-white">Home</a>
+                    <span>/</span>
+                    <span class="font-medium">Shop</span>
+                </nav>
+
+                <!-- Title -->
+                <div class="flex items-center gap-4 text-white">
+                    <div class="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center shadow-lg">
+                        <i class="fas fa-shopping-cart text-white text-2xl"></i>
                     </div>
 
                     <div class="flex flex-col justify-center items-start">
-                        <h2 class="text-4xl font-bold mb-2">All Products</h2>
-                        <p class="text-xl">Explore our complete product collection</p>
+                        <h2 class="text-3xl font-bold mb-2">All Products</h2>
+                        <p class="text-white/80">Explore our complete product collection</p>
                     </div>
                 </div>
             </div>
@@ -19,8 +29,21 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 mt-5 mx-3">
-        @for (product of productList(); track $index) {
+        @for (product of productList() | paginate: { id: 'prodPagination',
+        itemsPerPage: pageSize(),
+        currentPage: p(),
+        totalItems: total() }; track $index) {
         <app-single-card [data]="product"></app-single-card>
+        }@empty {
+        <div class="col-span-full flex justify-center items-center">
+            <app-not-found></app-not-found>
+        </div>
         }
     </div>
+    @if (productList().length > 0) {
+    <div class="my-5 flex justify-center">
+        <pagination-controls class="my-pagination" id="prodPagination" (pageChange)="getAllProducts($event)">
+        </pagination-controls>
+    </div>
+    }
 </section>

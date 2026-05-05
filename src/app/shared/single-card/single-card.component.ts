@@ -1,4 +1,4 @@
-import { Component, inject, input, Input, OnInit, signal, WritableSignal } from '@angular/core';
+import { Component, computed, inject, input, Input, OnInit, Signal, signal, WritableSignal } from '@angular/core';
 import { IProduct } from '../../core/models/IProduct/iproduct.interface';
 import { CurrencyPipe } from '@angular/common';
 import { StarRatingComponent } from "../components/star-rating/star-rating.component";
@@ -21,7 +21,10 @@ export class SingleCardComponent {
 
 
   cartAddedItem: WritableSignal<boolean> = signal(false)
-  wishlistAddedItem: WritableSignal<boolean> = signal(false)
+  isInWishlist: Signal<boolean> = computed(() =>
+    this.wishlistService.wishlistIds().includes(this.data()._id)
+  );
+
   data = input.required<IProduct>()
 
 
@@ -35,6 +38,7 @@ export class SingleCardComponent {
         this.cartAddedItem.set(true)
         console.log(res);
         this.mySwalMessageService.succesAddedItemToast('Cart')
+        this.cartService.numOfCartItems.set(res.numOfCartItems)
       },
       error: (err) => {
         console.log(err);
@@ -48,7 +52,12 @@ export class SingleCardComponent {
         this.mySwalMessageService.succesAddedItemToast('Wishlist')
         console.log(prodId)
         console.log(res);
-        this.wishlistAddedItem.set(true)
+        this.wishlistService.wishlistIds.update(ids => {
+          if (ids.includes(prodId)) return ids;
+          return [...ids, prodId];
+        });
+
+        this.wishlistService.countOfWishlistItem.set(res.data.length)
       },
       error: (err) => {
         console.log(err);

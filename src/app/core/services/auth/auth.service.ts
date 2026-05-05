@@ -23,6 +23,7 @@ export class AuthService {
 
   userId: WritableSignal<string | null> = signal(null);
   userData: WritableSignal<IJwt | null> = signal(null)
+  isLoggedIn: WritableSignal<boolean> = signal(false);
 
 
   register(data: any): Observable<any> {

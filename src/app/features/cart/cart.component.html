@@ -4,14 +4,14 @@
         <!-- Header -->
         <div class="flex items-center gap-3 mb-6">
 
-            <div class="bg-green-600 text-white w-10 h-10 rounded-lg flex items-center justify-center">
+            <div class="bg-purple-600 text-white w-10 h-10 rounded-lg flex items-center justify-center">
                 <i class="fa-solid fa-cart-shopping"></i>
             </div>
 
             <div>
                 <h1 class="text-2xl font-semibold">Shopping Cart</h1>
                 <p class="text-sm text-gray-500">
-                    You have <span class="text-green-600 font-medium">{{cartDetails().numOfCartItems}} items</span> in
+                    You have <span class="text-purple-600 font-medium">{{cartDetails().numOfCartItems}} items</span> in
                     your cart
                 </p>
             </div>
@@ -36,7 +36,7 @@
                             Woman Shawl
                         </h3>
 
-                        <p class="text-green-600 font-semibold mt-2">
+                        <p class="text-purple-600 font-semibold mt-2">
                             {{item.price}} EGP <span class="text-gray-400 text-sm">per unit</span>
                         </p>
 
@@ -50,7 +50,7 @@
                             <span>{{item.count}}</span>
 
                             <button (click)="updateCartProductQuantity(item.product._id , item.count + 1)"
-                                class="w-8 h-8 bg-green-600 text-white rounded-md cursor-pointer transition hover:bg-green-700 hover:text-white">
+                                class="w-8 h-8 bg-purple-600 text-white rounded-md cursor-pointer transition hover:bg-purple-700 hover:text-white">
                                 +
                             </button>
 
@@ -103,8 +103,8 @@
 
 
                         <!-- CTA Button -->
-                        <button routerLink="/home" class="flex items-center gap-3 bg-green-600 text-white px-7 py-3 rounded-xl font-medium
-      cursor-pointer hover:bg-green-700">
+                        <button routerLink="/home" class="flex items-center gap-3 bg-purple-600 text-white px-7 py-3 rounded-xl font-medium
+      cursor-pointer hover:bg-purple-700">
                             Start Shopping
                             <i class="fa-solid fa-arrow-right"></i>
 
@@ -123,7 +123,7 @@
                 @if (cartDetails().numOfCartItems >= 1) {
                 <div class="flex justify-between text-sm text-gray-500 mt-6">
 
-                    <a routerLink="/home" class="text-green-600 cursor-pointer transition hover:text-green-800">
+                    <a routerLink="/home" class="text-purple-600 cursor-pointer transition hover:text-purple-800">
                         ← Continue Shopping
                     </a>
 
@@ -141,7 +141,7 @@
            
             <div class="bg-white rounded-xl lg:col-span-1 shadow overflow-hidden h-fit">
                 <!-- Header -->
-                <div class="bg-green-700 text-white p-5">
+                <div class="bg-purple-700 text-white p-5">
 
                     <h3 class="font-semibold text-lg flex items-center gap-2">
                         <i class="fa-solid fa-bag-shopping"></i>
@@ -161,7 +161,7 @@
                     </div>
                     <!-- Checkout -->
                     <button [routerLink]="['/checkout', cartDetails().cartId]" [disabled]="cartDetails().numOfCartItems == 0"
-                        class="w-full cursor-pointer bg-green-700 text-white py-3 rounded-lg font-medium flex items-center justify-center gap-2 transition hover:bg-green-800 hover:text-white">
+                        class="w-full cursor-pointer bg-purple-700 text-white py-3 rounded-lg font-medium flex items-center justify-center gap-2 transition hover:bg-purple-800 hover:text-white">
                         <i class="fa-solid fa-lock"></i>
                         Secure Checkout
                     </button>
@@ -169,7 +169,7 @@
                     <!-- Bottom -->
                     <div class="text-xs text-gray-400 flex justify-center gap-6 mt-3">
                         <span>
-                            <i class="fa-solid fa-shield-halved text-green-600 mr-1"></i>
+                            <i class="fa-solid fa-shield-halved text-purple-600 mr-1"></i>
                             Secure Payment
                         </span>
                         <span>

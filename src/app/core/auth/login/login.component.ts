@@ -16,8 +16,8 @@ export class LoginComponent implements OnInit {
   private readonly fb = inject(FormBuilder)
   private readonly validationsService = inject(ValidationErrorsService);
   private readonly authService = inject(AuthService);
-  private readonly router = inject(Router); 
-  private readonly mySwalMessageService = inject(MySwalMessageService); 
+  private readonly router = inject(Router);
+  private readonly mySwalMessageService = inject(MySwalMessageService);
 
   signinForm !: FormGroup;
 
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     this.signinForm = this.fb.group(
       {
         email: [null, [Validators.required, Validators.email]],
-        password: [null, [Validators.required]]
+        password: [null, [Validators.required, Validators.pattern(/^(?=.*[0-9])(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z0-9!@#$%^&*(),.?":{}|<>]{8,}$/)]]
       })
   }
 
@@ -49,11 +49,12 @@ export class LoginComponent implements OnInit {
         this.mySwalMessageService.errorMsg(err.error.message)
       },
       complete: () => {
+        this.authService.isLoggedIn.set(true)
         this.mySwalMessageService.succesMsg(`Congratulations !
         You have logged in`)
         setTimeout(() => {
           this.router.navigate(['/home'])
-        }, 1000)
+        }, 1500)
       }
     });
   }

@@ -7,6 +7,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { loaderInterceptor } from './core/interceptors/loader/loader-interceptor';
 import { headerInterceptor } from './core/interceptors/header/header-interceptor';
+import { unauthorizedInterceptor } from './core/interceptors/unauthorized/unauthorized-interceptor';
 
 
 export const appConfig: ApplicationConfig = {
@@ -14,7 +15,7 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     importProvidersFrom(NgxSpinnerModule),
     provideBrowserGlobalErrorListeners(),
-    provideHttpClient(withFetch(), withInterceptors([loaderInterceptor , headerInterceptor])),
+    provideHttpClient(withFetch(), withInterceptors([loaderInterceptor , headerInterceptor, unauthorizedInterceptor])),
     provideRouter(routes), provideClientHydration(withEventReplay())
   ]
 };

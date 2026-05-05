@@ -6,12 +6,12 @@
       <div class="flex gap-6 items-center">
 
         <div class="flex items-center gap-2">
-          <i class="fa-solid fa-truck text-green-600"></i>
+          <i class="fa-solid fa-truck text-purple-600"></i>
           Free Shipping on Orders 500 EGP
         </div>
 
         <div class="flex items-center gap-2">
-          <i class="fa-solid fa-gift text-green-600"></i>
+          <i class="fa-solid fa-gift text-purple-600"></i>
           New Arrivals Daily
         </div>
 
@@ -31,8 +31,8 @@
 
         @if(!isLoggedIn()){
         <div class="flex gap-3">
-          <a class="hover:text-green-600">Sign In</a>
-          <a class="hover:text-green-600">Sign Up</a>
+          <a routerLink="/login" class="hover:text-purple-600">Sign In</a>
+          <a routerLink="/register" class="hover:text-purple-600">Sign Up</a>
         </div>
         }
 
@@ -51,8 +51,8 @@
       <div class="flex items-center justify-between h-16.5">
 
         <!-- Logo -->
-        <a class="flex items-center gap-2 text-2xl font-bold">
-          <i class="fa-solid fa-cart-shopping text-green-600"></i>
+        <a  routerLink="/home" class="flex items-center gap-2 text-2xl font-bold">
+          <i class="fa-solid fa-cart-shopping text-purple-600"></i>
           FreshCart
         </a>
 
@@ -63,9 +63,9 @@
           <div class="w-full relative">
 
             <input type="text" placeholder="Search for products, brands and more..."
-              class="w-full border rounded-full py-2 px-5 pr-12 border-mist-300 focus:ring-green-500 focus:border-green-500 ">
+              class="w-full border rounded-full py-2 px-5 pr-12 border-mist-300 focus:ring-purple-500 focus:border-purple-500 ">
 
-            <button class="absolute right-2 top-1/2 -translate-y-1/2 bg-green-600 text-white size-8 rounded-full">
+            <button class="absolute right-2 top-1/2 -translate-y-1/2 bg-purple-600 text-white size-8 rounded-full">
               <i class="fa-solid fa-search"></i>
             </button>
 
@@ -77,14 +77,14 @@
         <!-- Desktop Menu -->
         <div class="hidden lg:flex items-center gap-8 text-gray-700">
 
-          <a routerLink="/home" class="hover:text-green-600 transition font-semibold">Home</a>
-          <a routerLink="/products" class="hover:text-green-600 transition font-semibold">Shop</a>
+          <a routerLink="/home" routerLinkActive="text-lg text-purple-600 transition-all" class="hover:text-purple-600 transition font-semibold">Home</a>
+          <a routerLink="/products" routerLinkActive="text-lg text-purple-600 transition-all" class="hover:text-purple-600 transition font-semibold">Shop</a>
 
 
           <!-- Drop Down Btn -->
           <button id="categoryDropDown" data-dropdown-toggle="categoryDelayDrop" data-dropdown-delay="500"
             data-dropdown-trigger="hover"
-            class="inline-flex items-center justify-center hover:text-green-600 transition font-semibold leading-5 rounded-base text-sm"
+            class="inline-flex items-center justify-center hover:text-purple-600 transition font-semibold leading-5 rounded-base"
             type="button">
             Categories
             <svg class="w-4 h-4 ms-1.5 -me-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -99,29 +99,29 @@
             class="z-50 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
             <ul class="text-sm text-body font-medium" aria-labelledby="categoryDropDown">
               <li>
-                <a href="#" class="inline-flex items-center w-full p-3 hover:bg-green-100 hover:text-green-600">All
+                <a href="#" class="inline-flex items-center w-full p-3 hover:bg-purple-100 hover:text-purple-600">All
                   Categories</a>
               </li>
               <li>
                 <a href="#"
-                  class="inline-flex items-center w-full p-3 hover:bg-green-100 hover:text-green-600">Electronic</a>
+                  class="inline-flex items-center w-full p-3 hover:bg-purple-100 hover:text-purple-600">Electronic</a>
               </li>
               <li>
-                <a href="#" class="inline-flex items-center w-full p-3 hover:bg-green-100 hover:text-green-600">Women's
+                <a href="#" class="inline-flex items-center w-full p-3 hover:bg-purple-100 hover:text-purple-600">Women's
                   Fasion</a>
               </li>
               <li>
-                <a href="#" class="inline-flex items-center w-full p-3 hover:bg-green-100 hover:text-green-600">Men's
+                <a href="#" class="inline-flex items-center w-full p-3 hover:bg-purple-100 hover:text-purple-600">Men's
                   Fasion</a>
               </li>
               <li>
-                <a href="#" class="inline-flex items-center w-full p-3 hover:bg-green-100 hover:text-green-600">Beauty &
+                <a href="#" class="inline-flex items-center w-full p-3 hover:bg-purple-100 hover:text-purple-600">Beauty &
                   Health</a>
               </li>
             </ul>
           </div>
 
-          <a routerLink="/brands" class="hover:text-green-600 transition font-semibold">Brands</a>
+          <a routerLink="/brands" routerLinkActive="text-lg text-purple-600 transition-all" class="hover:text-purple-600 transition font-semibold">Brands</a>
 
         </div>
 
@@ -132,8 +132,8 @@
           <div class="hover:opacity-80 border-r border-gray-300 pe-3">
             <a routerLink="/support">
               <div class="flex justify-center sitems-center gap-2">
-                <div class="p-5 flex items-center justify-center bg-green-50 rounded-full size-5">
-                  <i class="fa-solid fa-headset text-green-600 text-sm"></i>
+                <div class="p-5 flex items-center justify-center bg-purple-50 rounded-full size-5">
+                  <i class="fa-solid fa-headset text-purple-600 text-sm"></i>
                 </div>
                 <div class="flex flex-col">
                   <span class="text-gray-500 text-sm">Support</span>
@@ -144,20 +144,30 @@
           </div>
 
           <div class="flex justify-center items-center text-gray-600">
-            <div
-              class="p-6 flex items-center justify-center rounded-full size-5 hover:bg-gray-100 hover:text-green-600 cursor-pointer">
-              <a routerLink="/wishlist"> <i class="fa-regular fa-heart text-xl"></i> </a>
+            <div routerLink="/wishlist"
+              class="p-6 flex relative items-center justify-center rounded-full size-5 hover:bg-gray-100 hover:text-purple-600 cursor-pointer">
+              @if (countOfWishlistItem() > 0) {
+              <span
+                class="absolute top-1 text-white font-bold text-sm right-0 flex justify-center items-center rounded-full size-5 bg-purple-600">
+                {{countOfWishlistItem()}} </span>
+              }
+              <a> <i class="fa-regular fa-heart text-xl"></i> </a>
             </div>
-            <div
-              class="p-6 flex items-center justify-center rounded-full size-5 hover:bg-gray-100 hover:text-green-600 cursor-pointer">
-              <a routerLink="/cart"> <i class="fa-solid fa-cart-shopping text-xl"></i> </a>
+            <div routerLink="/cart"
+              class="p-6 flex relative items-center justify-center rounded-full size-5 hover:bg-gray-100 hover:text-purple-600 cursor-pointer">
+              @if (numOfCartItems() > 0) {
+              <span
+                class="absolute top-1 text-white font-bold text-sm right-0 flex justify-center items-center rounded-full size-5 bg-purple-600">
+                {{numOfCartItems()}} </span>
+              }
+              <a> <i class="fa-solid fa-cart-shopping text-xl"></i> </a>
             </div>
 
 
             <!-- Logged Out -->
             @if (!isLoggedIn()) {
             <a routerLink="/login"
-              class="hidden lg:block bg-green-600 text-white px-6 py-2 rounded-full cursor-pointer hover:bg-green-700 transition">
+              class="hidden lg:block bg-purple-600 text-white px-6 py-2 rounded-full cursor-pointer hover:bg-purple-700 transition">
               <i class="fa-regular fa-user mr-2"></i>
               Sign In
             </a>
@@ -169,12 +179,12 @@
             <!-- Drop Down Btn -->
             <button id="userDropDown" data-dropdown-toggle="userDelayDrop" data-dropdown-delay="500"
               data-dropdown-trigger="hover"
-              class="inline-flex items-center justify-center hover:text-green-600 transition font-semibold leading-5 rounded-base text-sm"
+              class="inline-flex items-center justify-center hover:text-purple-600 transition font-semibold leading-5 rounded-base text-sm"
               type="button">
               <div
-                class="p-6 flex items-center justify-center rounded-full size-5 text-gray-600 hover:bg-gray-100 hover:text-green-600 cursor-pointer">
-                <div aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                  fill="none" viewBox="0 0 24 24">
+                class="p-6 flex items-center justify-center rounded-full size-5 text-gray-600 hover:bg-gray-100 hover:text-purple-600 cursor-pointer">
+                <div aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                  viewBox="0 0 24 24">
                   <i class="fa-regular fa-circle-user text-xl"></i>
                 </div>
               </div>
@@ -185,33 +195,28 @@
               class="z-50 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
               <ul class="text-sm text-gray-600 font-medium" aria-labelledby="userDropDown">
                 <li>
-                  <a href="#" class="inline-flex items-center w-full p-3 my-1 hover:bg-green-100 hover:text-green-600">
+                  <a href="#" class="inline-flex items-center w-full p-3 my-1 hover:bg-purple-100 hover:text-purple-600">
                     <i class="fa-solid fa-user me-2"></i> My Profile</a>
                 </li>
                 <li>
-                  <a href="#"
-                    class="inline-flex items-center w-full p-3 my-1 hover:bg-green-100 hover:text-green-600">
-                    <i
-                      class="fa-solid fa-box me-2"></i> My Orders</a>
+                  <a href="#" class="inline-flex items-center w-full p-3 my-1 hover:bg-purple-100 hover:text-purple-600">
+                    <i class="fa-solid fa-box me-2"></i> My Orders</a>
                 </li>
                 <li>
-                  <a href="#"
-                    class="inline-flex items-center w-full p-3 my-1 hover:bg-green-100 hover:text-green-600">
+                  <a href="#" class="inline-flex items-center w-full p-3 my-1 hover:bg-purple-100 hover:text-purple-600">
                     <i class="fa-solid fa-heart me-2"></i> My Wishlist</a>
                 </li>
                 <li>
-                  <a href="#"
-                    class="inline-flex items-center w-full p-3 my-1 hover:bg-green-100 hover:text-green-600">
+                  <a href="#" class="inline-flex items-center w-full p-3 my-1 hover:bg-purple-100 hover:text-purple-600">
                     <i class="fa-solid fa-address-card me-2"></i> Addresses</a>
                 </li>
                 <li>
-                  <a href="#"
-                    class="inline-flex items-center w-full p-3 my-1 hover:bg-green-100 hover:text-green-600">
+                  <a href="#" class="inline-flex items-center w-full p-3 my-1 hover:bg-purple-100 hover:text-purple-600">
                     <i class="fa-solid fa-user-cog me-2"></i> Setting</a>
                 </li>
                 <li>
-                  <a href="#" (click)="logout()"
-                    class="inline-flex items-center w-full p-3 my-1 text-red-500 hover:bg-red-100 hover:text-red-700">
+                  <a (click)="logout()"
+                    class="inline-flex cursor-pointer items-center w-full p-3 my-1 text-red-500 hover:bg-red-100 hover:text-red-700">
                     <i class="fa-solid fa-arrow-circle-left me-2"></i>Logout</a>
                 </li>
               </ul>

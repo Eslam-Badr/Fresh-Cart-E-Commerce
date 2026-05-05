@@ -7,34 +7,39 @@ import { environment } from '../../../../environments/environment';
   providedIn: 'root',
 })
 export class CartService {
+
+
+  numOfCartItems: WritableSignal<number> = signal(0);
+
+
   private readonly httpClient = inject(HttpClient)
 
 
 
-  addProductToCart(prodId:any): Observable<any>{
+  addProductToCart(prodId: any): Observable<any> {
     return this.httpClient.post(`${environment.baseURL}/api/v2/cart`, {
       productId: prodId
     })
   }
 
-  getLoggedInUser(): Observable<any>{
+  getLoggedInUser(): Observable<any> {
     return this.httpClient.get(`${environment.baseURL}/api/v2/cart`)
   }
 
-  updateCartProductQuantity(productId:any, itemCount:any): Observable<any>{
+  updateCartProductQuantity(productId: any, itemCount: any): Observable<any> {
     return this.httpClient.put(`${environment.baseURL}/api/v2/cart/${productId}`, {
       count: itemCount
     })
   }
 
-  removeProductFromCart(productId:any): Observable<any>{
+  removeProductFromCart(productId: any): Observable<any> {
     return this.httpClient.delete(`${environment.baseURL}/api/v2/cart/${productId}`)
   }
 
-  deleteUserCart(): Observable<any>{
+  deleteUserCart(): Observable<any> {
     return this.httpClient.delete(`${environment.baseURL}/api/v2/cart`)
   }
 
 
-  
+
 }

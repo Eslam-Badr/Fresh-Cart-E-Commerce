@@ -1,13 +1,13 @@
 <div class="border my-2 border-gray-200 bg-white rounded-lg overflow-hidden hover:-translate-y-2 transition-all">
     <div class="relative">
-        <div class="">
+        <div [routerLink]="['/product-details', data()._id]" class="cursor-pointer">
             <img [src]="data().imageCover" class="h-60 w-full object-cover" [alt]="data().title">
         </div>
         <div class="absolute top-3 right-3 flex flex-col gap-4">
-            <button (click)="addProductToWishlist(data().id)"
+            <button (click)="addProductToWishlist(data()._id)"
                 class="p-3 rounded-full size-8 flex justify-center items-center bg-white opacity-85 shadow-2xl cursor-pointer hover:opacity-100 transition">
-                @if (wishlistAddedItem()) {
-                    <i class="fa-solid fa-heart text-red-500"></i>
+                @if (isInWishlist()) {
+                    <i class="fa-solid fa-heart text-purple-500"></i>
                 }@else {
                     <i class="fa-regular fa-heart"></i>
                 }
@@ -37,7 +37,7 @@
             <p class="text-xl">Price: <span class="text-amber-600">{{data().price | currency : 'EGP'}}</span> </p>
        
             <button (click)="addProductToCart(data().id)"
-                class="p-3 text-white rounded-full size-8 bg-green-600 flex justify-center items-center cursor-pointer hover:bg-green-700 transition">
+                class="p-3 text-white rounded-full size-8 bg-purple-600 flex justify-center items-center cursor-pointer hover:bg-purple-700 transition">
                @if (cartAddedItem()) {
                  <i class="fa-solid fa-check"></i>
                }@else {

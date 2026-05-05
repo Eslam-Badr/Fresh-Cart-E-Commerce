@@ -17,15 +17,15 @@
 
             <div class="flex gap-8 mt-6 text-sm text-gray-600">
                 <div class="flex items-center gap-2">
-                    <i class="fa-solid fa-truck text-green-600"></i>
+                    <i class="fa-solid fa-truck text-purple-600"></i>
                     <span>Free Delivery</span>
                 </div>
                 <div class="flex items-center gap-2">
-                    <i class="fa-solid fa-shield-halved text-green-600"></i>
+                    <i class="fa-solid fa-shield-halved text-purple-600"></i>
                     <span>Secure Payment</span>
                 </div>
                 <div class="flex items-center gap-2">
-                    <i class="fa-solid fa-headset text-green-600"></i>
+                    <i class="fa-solid fa-headset text-purple-600"></i>
                     <span>24/7 Support</span>
                 </div>
             </div>
@@ -37,7 +37,7 @@
             <!-- Logo -->
             <div class="text-center mb-6">
                 <h1 class="text-3xl font-bold">
-                    <span class="text-green-600">Fresh</span>Cart
+                    <span class="text-purple-600">Fresh</span>Cart
                 </h1>
                 <h2 class="text-xl font-semibold mt-2 text-gray-800">Create Account</h2>
                 <p class="text-gray-500 text-sm mt-1">
@@ -56,7 +56,7 @@
                     <div class="relative">
                         <i class="fa-solid fa-user absolute left-3 top-3.5 text-gray-400"></i>
                         <input type="text" formControlName="name" placeholder="Enter your full name"
-                            class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:outline-none">
+                            class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none">
                     </div>
                     @if (getError('name')) {
                     <p class="text-red-500 text-sm mt-1">
@@ -73,7 +73,7 @@
                     <div class="relative">
                         <i class="fa-solid fa-envelope absolute left-3 top-3.5 text-gray-400"></i>
                         <input type="email" formControlName="email" placeholder="Enter your email"
-                            class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:outline-none">
+                            class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none">
                     </div>
 
                     @if (getError('email')) {
@@ -91,7 +91,7 @@
                     <div class="relative">
                         <i class="fa-solid fa-phone absolute left-3 top-3.5 text-gray-400"></i>
                         <input type="tel" formControlName="phone" placeholder="Enter your phone number"
-                            class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:outline-none">
+                            class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none">
                     </div>
 
                     @if (getError('phone')) {
@@ -109,7 +109,7 @@
                     <div class="relative">
                         <i class="fa-solid fa-lock absolute left-3 top-3.5 text-gray-400"></i>
                         <input [type]="showPassword() ? 'text' : 'password'" formControlName="password" placeholder="Enter your password"
-                            class="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:outline-none">
+                            class="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none">
                         <button type="button" (click)="visiblePassword()"
                             class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition cursor-pointer">
                             @if (showPassword()) {
@@ -135,7 +135,7 @@
                     <div class="relative">
                         <i class="fa-solid fa-lock absolute left-3 top-3.5 text-gray-400"></i>
                         <input type="password" formControlName="rePassword" placeholder="Re-enter your password"
-                            class="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:outline-none">
+                            class="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none">
                     </div>
 
                     @if (getError('rePassword') || registerForm.getError('mismatch')) {
@@ -147,7 +147,7 @@
 
                 <!-- Submit -->
                 <button type="submit" [disabled]="registerForm.invalid"
-                    class="w-full bg-green-600 disabled:cursor-not-allowed disabled:bg-gray-400 hover:bg-green-700 text-white font-semibold hover:cursor-pointer py-3 rounded-lg transition">
+                    class="w-full bg-purple-600 disabled:cursor-not-allowed disabled:bg-gray-400 hover:bg-purple-700 text-white font-semibold hover:cursor-pointer py-3 rounded-lg transition">
                     Create Account
                 </button>
 
@@ -156,7 +156,7 @@
             <!-- Footer -->
             <div class="text-center mt-6 text-sm text-gray-600">
                 Already have an account?
-                <a routerLink="/login" class="text-green-600 cursor-pointer font-medium hover:underline">
+                <a routerLink="/login" class="text-purple-600 cursor-pointer font-medium hover:underline">
                     Sign In
                 </a>
             </div>

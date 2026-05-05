@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
+import { Component, computed, inject, OnInit, Signal, signal, WritableSignal } from '@angular/core';
 import { WishlistService } from '../../core/services/wishlist/wishlist.service';
 import { Iwishlist } from '../../core/models/IWishlist/iwishlist.interface';
 import { MySwalMessageService } from '../../core/services/my-swal-message/my-swal-message.service';
@@ -30,6 +30,8 @@ export class WishlistComponent implements OnInit {
       next: (res) => {
         console.log(res);
         this.wishlist.set(res.data)
+        const ids = res.data.map((item: any) => item._id);
+        this.wishlistService.wishlistIds.set(ids);
       },
       error: (err) => {
         console.log(err);
@@ -41,8 +43,9 @@ export class WishlistComponent implements OnInit {
     this.wishlistService.deleteProductToWishlist(prodId).subscribe({
       next: (res) => {
         console.log(res);
-       this.getUserProductWishlist()
+        this.getUserProductWishlist()
         this.mySwalMessageService.succesDeletetItemToast('Wishlist')
+        this.wishlistService.countOfWishlistItem.set(res.data.length)
       },
       error: (err) => {
         console.log(err);

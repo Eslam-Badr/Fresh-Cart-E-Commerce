@@ -13,6 +13,7 @@ import { LoginComponent } from './core/auth/login/login.component';
 import { ForgetPasswordComponent } from './features/forget-password/forget-password.component';
 import { CheckoutComponent } from './features/checkout/checkout.component';
 import { AllordersComponent } from './features/allorders/allorders.component';
+import { authGuard } from './core/guards/auth/auth-guard';
 
 export const routes: Routes = [
     
@@ -21,15 +22,15 @@ export const routes: Routes = [
     {path:'brands', component: BrandsComponent},
     {path:'product-details/:id', component: ProductDetailsComponent},
     {path:'categories', component: CategoriesComponent},
-    {path:'checkout/:cartId', component: CheckoutComponent},
+    {path:'checkout/:cartId', component: CheckoutComponent , canActivate:[authGuard]},
     {path:'forget-password', component: ForgetPasswordComponent},
     {path:'register', component: RegisterComponent},
-    {path:'allorders/:userId', component: AllordersComponent},
+    {path:'allorders/:userId', component: AllordersComponent, canActivate:[authGuard]},
     {path:'login', component: LoginComponent},
-    {path:'cart', component: CartComponent},
+    {path:'cart', component: CartComponent , canActivate:[authGuard]},
     {path:'products', component: ProductsComponent},
     {path:'support', component: SupportComponent},
-    {path:'wishlist', component: WishlistComponent},
+    {path:'wishlist', component: WishlistComponent , canActivate:[authGuard]},
 
     {path:'**', component: NotFoundComponent},
 

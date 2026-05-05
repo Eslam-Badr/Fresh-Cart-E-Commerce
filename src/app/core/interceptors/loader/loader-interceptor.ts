@@ -10,7 +10,7 @@ export const loaderInterceptor: HttpInterceptorFn = (req, next) => {
   ngxSpinner.show()
 
 
-  return next(req).pipe(finalize(()=>{
+  return next(req).pipe(finalize(() => {
     ngxSpinner.hide()
   }));
 };

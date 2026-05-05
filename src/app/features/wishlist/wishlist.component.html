@@ -3,7 +3,7 @@
 
     <!-- Title -->
     @if (wishlist().length > 0) {
-      <h2 class="text-4xl font-bold text-green-600 mb-10">
+      <h2 class="text-4xl font-bold text-purple-600 mb-10">
         Your Wishlist
       </h2>
 
@@ -54,15 +54,15 @@
               </div>
 
               <!-- Price -->
-              <p class="text-green-600 font-bold text-lg mb-4">
+              <p class="text-purple-600 font-bold text-lg mb-4">
                 {{ item.price }} EGP
               </p>
 
               <!-- Button -->
               <a
                 [routerLink]="['/product-details', item._id]"
-                class="mt-auto text-center bg-green-600 text-white py-2 rounded-xl
-                       hover:bg-green-700 transition font-medium"
+                class="mt-auto text-center bg-purple-600 text-white py-2 rounded-xl
+                       hover:bg-purple-700 transition font-medium"
               >
                 View Details
               </a>
@@ -93,7 +93,7 @@
 
         <a
           routerLink="/home"
-          class="bg-green-600 text-white px-6 py-3 rounded-xl hover:bg-green-700 transition"
+          class="bg-purple-600 text-white px-6 py-3 rounded-xl hover:bg-purple-700 transition"
         >
           Start Shopping
         </a>

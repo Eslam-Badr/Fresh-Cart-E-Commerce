@@ -38,6 +38,7 @@ export class CartComponent implements OnInit {
       next: (res) => {
         console.log(res);
         this.cartDetails.set(res)
+        this.cartService.numOfCartItems.set(res.numOfCartItems)
       },
       error: (err) => {
         console.log(err);
@@ -52,6 +53,7 @@ export class CartComponent implements OnInit {
         console.log(res);
         if (res.message = 'success') {
           res = this.cartDetails.set({} as Icart)
+          this.cartService.numOfCartItems.set(0)
         }
       },
       error: (err) => {
@@ -61,11 +63,12 @@ export class CartComponent implements OnInit {
   }
 
 
-  updateCartProductQuantity(prodId:any, count:any){
+  updateCartProductQuantity(prodId: any, count: any) {
     this.cartService.updateCartProductQuantity(prodId, count).subscribe({
       next: (res) => {
         console.log(res);
         this.cartDetails.set(res)
+        this.cartService.numOfCartItems.set(res.numOfCartItems)
       },
       error: (err) => {
         console.log(err);

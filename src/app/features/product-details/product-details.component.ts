@@ -88,6 +88,7 @@ export class ProductDetailsComponent implements OnInit {
         this.addedItem.set(true)
         console.log(res);
         this.mySwalMessageService.succesAddedItemToast('Cart')
+        this.cartService.numOfCartItems.set(res.numOfCartItems)
       },
       error: (err) => {
         console.log(err);
@@ -99,6 +100,7 @@ export class ProductDetailsComponent implements OnInit {
     this.wishlistService.addProductToWishlist(prodId).subscribe({
       next: (res) => {
         this.mySwalMessageService.succesAddedItemToast('Wishlist')
+        this.wishlistService.countOfWishlistItem.set(res.data.length)
         console.log(prodId)
         console.log(res);
       },
