@@ -6,7 +6,6 @@ import { IProduct } from '../../core/models/IProduct/iproduct.interface';
 import { FormsModule } from '@angular/forms';
 import { CurrencyPipe } from '@angular/common';
 import { CartService } from '../../core/services/cart/cart.service';
-import Swal from 'sweetalert2';
 import { MySwalMessageService } from '../../core/services/my-swal-message/my-swal-message.service';
 import { WishlistService } from '../../core/services/wishlist/wishlist.service';
 
