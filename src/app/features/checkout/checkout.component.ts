@@ -50,7 +50,7 @@ export class CheckoutComponent implements OnInit {
     this.ordersService.checkoutSession(this.cartId(), payload).subscribe({
       next: (res) => {
         console.log(res);
-        if (res.status == 'success') {
+        if (res.status == "success") {
           window.open(res.session.url, "_self")
         }
       },
