@@ -24,8 +24,8 @@ export class CheckoutComponent implements OnInit {
   cartId: WritableSignal<string | null> = signal('')
 
   ngOnInit(): void {
-    this.formInit()
     this.getUrl()
+    this.formInit()
   }
 
   checkoutForm !: FormGroup;
@@ -41,10 +41,10 @@ export class CheckoutComponent implements OnInit {
   }
 
   payWithVisa() {
-
     let payload = {
       shippingAddress: this.checkoutForm.value
     }
+
     console.log(payload);
 
     this.ordersService.checkoutSession(this.cartId(), payload).subscribe({
@@ -63,10 +63,10 @@ export class CheckoutComponent implements OnInit {
   getUrl() {
     this.activatedRoute.paramMap.subscribe({
       next: (urlPath) => {
-        let cardId = urlPath.get('cartId')
-        console.log('card id: ' + cardId);
+        let cardID = urlPath.get('cartId')
+        console.log('card id: ' + cardID);
 
-        this.cartId.set(cardId)
+        this.cartId.set(cardID)
       }
     })
   }
@@ -76,7 +76,7 @@ export class CheckoutComponent implements OnInit {
     this.ordersService.creatCashOrderFromCart(this.cartId(), this.checkoutForm.value).subscribe({
       next: (res) => {
         console.log(res);
-        this.router.navigate([`/allorders/${this.userId}`])
+        this.router.navigate([`/allorders`])
       },
       error: (err) => {
         console.log(err);

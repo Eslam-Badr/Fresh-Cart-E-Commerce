@@ -37,8 +37,7 @@ export class AllordersComponent implements OnInit {
   getUserOrders() {
     const userId = this.authService.userId();
     if (!userId) return
-
-
+    
     this.ordersService.getUserOrders(userId).subscribe({
       next: (res) => {
         console.log("User's Orders", res);

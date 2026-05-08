@@ -25,7 +25,7 @@ export const routes: Routes = [
     {path:'checkout/:cartId', component: CheckoutComponent , canActivate:[authGuard]},
     {path:'forget-password', component: ForgetPasswordComponent},
     {path:'register', component: RegisterComponent},
-    {path:'allorders/:userId', component: AllordersComponent, canActivate:[authGuard]},
+    {path:'allorders', component: AllordersComponent, canActivate:[authGuard]},
     {path:'login', component: LoginComponent},
     {path:'cart', component: CartComponent , canActivate:[authGuard]},
     {path:'products', component: ProductsComponent},

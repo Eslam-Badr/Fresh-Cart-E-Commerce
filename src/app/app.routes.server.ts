@@ -7,7 +7,7 @@ export const serverRoutes: ServerRoute[] = [
   },
   
   {
-    path: 'allorders/:userId',
+    path: 'allorders',
     renderMode: RenderMode.Server
   },
 
